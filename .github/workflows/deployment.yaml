@@ -126,9 +126,10 @@ jobs:
 #  #    Runs SSH commands on the EC2 machine to deploy the Docker image.
       - name: Run SSH commands
         run: |
-          ssh -o StrictHostKeyChecking=no -T ubuntu@65.0.173.69 << 'EOF'
-          docker rmi -f divyapatel42/ecommerce-webapp:backendGithubActions 2>/dev/null
+          ssh -o StrictHostKeyChecking=no -T ubuntu@13.51.166.172 << 'EOF'
+          docker rmi -f angelodev83/ecommerce-app:backendGithubActions 2>/dev/null
           docker rm -f $(docker ps -q --filter "publish=8000/tcp") 2>/dev/null
-          docker run -d -p 8000:8000 divyapatel42/ecommerce-webapp:backendGithubActions 2>/dev/null
+          docker run -d -p 8000:8000 angelodev83/ecommerce-app:backendGithubActions
           sudo systemctl restart nginx
           EOF
+
